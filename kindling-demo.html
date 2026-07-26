@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Kindling Coffee Co. — Roasted at the Edge of Dawn</title>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:#1A1512;
+    color:#F2E8DC;
+    font-family:'Karla',sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  ::selection{background:#C87F3F;color:#1A1512;}
+
+  h1,h2,h3{font-family:'Bitter',serif;font-weight:600;letter-spacing:-0.5px;}
+
+  /* NAV */
+  nav{
+    position:fixed;top:0;width:100%;z-index:100;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:22px 48px;
+    background:rgba(26,21,18,0.8);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(242,232,220,0.08);
+  }
+  .brand{font-family:'Bitter',serif;font-size:1.25rem;letter-spacing:1px;text-transform:uppercase;font-weight:700;}
+  .brand em{font-style:italic;color:#C87F3F;font-weight:400;}
+  nav .links{display:flex;gap:34px;align-items:center;}
+  nav a{color:#F2E8DC;text-decoration:none;font-size:0.82rem;letter-spacing:0.5px;text-transform:uppercase;opacity:0.7;transition:opacity .2s;}
+  nav a:hover{opacity:1;}
+  .nav-cta{border:1px solid rgba(200,127,63,0.5);padding:8px 18px;border-radius:2px;font-size:0.78rem;letter-spacing:1px;text-transform:uppercase;color:#C87F3F;}
+
+  /* STEAM DIVIDER */
+  .steam{width:100%;height:56px;display:block;}
+  .steam path{fill:#1A1512;}
+  .steam.flip{transform:rotate(180deg);}
+
+  /* HERO */
+  .hero{
+    min-height:100vh;
+    display:flex;flex-direction:column;justify-content:center;
+    padding:150px 48px 90px;
+    position:relative;
+    background:
+      radial-gradient(ellipse at 15% 15%, rgba(200,127,63,0.12), transparent 55%),
+      radial-gradient(ellipse at 90% 80%, rgba(139,66,37,0.10), transparent 50%);
+  }
+  .hero-eyebrow{
+    font-size:0.78rem;letter-spacing:3px;text-transform:uppercase;
+    color:#C87F3F;margin-bottom:20px;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem,5.5vw,4.6rem);
+    line-height:1.05;
+    max-width:920px;
+    margin-bottom:26px;
+  }
+  .hero h1 .i{font-style:italic;color:#C87F3F;font-weight:400;}
+  .hero p{
+    font-size:1.08rem;max-width:480px;color:rgba(242,232,220,0.65);
+    margin-bottom:38px;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:15px 32px;border-radius:2px;
+    font-size:0.85rem;letter-spacing:1.2px;text-transform:uppercase;
+    text-decoration:none;transition:all .25s;
+    width:fit-content;font-weight:600;
+  }
+  .btn-primary{background:#C87F3F;color:#1A1512;}
+  .btn-primary:hover{background:#d99354;transform:translateY(-2px);}
+  .btn-ghost{border:1px solid rgba(242,232,220,0.3);color:#F2E8DC;}
+  .btn-ghost:hover{border-color:#C87F3F;color:#C87F3F;}
+  .hero-row{display:flex;gap:16px;flex-wrap:wrap;}
+
+  .stats{display:flex;gap:44px;margin-top:60px;flex-wrap:wrap;}
+  .stat-num{font-family:'Bitter',serif;font-size:1.9rem;font-weight:700;color:#C87F3F;}
+  .stat-label{font-size:0.82rem;color:rgba(242,232,220,0.55);margin-top:2px;}
+
+  /* SECTION SHELL */
+  section{padding:100px 48px;position:relative;}
+  .section-inner{max-width:1180px;margin:0 auto;}
+  .eyebrow{font-size:0.78rem;letter-spacing:3px;text-transform:uppercase;color:#C87F3F;margin-bottom:14px;}
+  .section-title{font-size:clamp(1.75rem,3.3vw,2.5rem);max-width:620px;margin-bottom:18px;}
+  .section-sub{color:rgba(242,232,220,0.58);max-width:520px;font-size:0.98rem;margin-bottom:56px;}
+
+  /* PRODUCTS */
+  .products-bg{background:#211A15;}
+  .product-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:2px;background:rgba(242,232,220,0.08);
+  }
+  .product-card{background:#211A15;padding:34px 28px;display:flex;flex-direction:column;gap:14px;transition:background .25s;}
+  .product-card:hover{background:#2A2119;}
+  .product-bag{
+    width:100%;aspect-ratio:1/1;border-radius:2px;
+    display:flex;align-items:flex-end;padding:16px;
+    font-family:'Bitter',serif;font-style:italic;font-size:0.85rem;color:rgba(242,232,220,0.5);
+  }
+  .bag1{background:linear-gradient(150deg,#C87F3F,#1A1512);}
+  .bag2{background:linear-gradient(150deg,#8B4225,#1A1512);}
+  .bag3{background:linear-gradient(150deg,#3D2B1F,#1A1512);}
+  .bag4{background:linear-gradient(150deg,#5A4636,#1A1512);}
+  .product-name{font-family:'Bitter',serif;font-size:1.15rem;}
+  .product-desc{font-size:0.87rem;color:rgba(242,232,220,0.5);}
+  .product-price{font-size:0.88rem;color:#C87F3F;margin-top:auto;padding-top:6px;}
+
+  /* RITUAL */
+  .ritual-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:38px;}
+  .ritual-step{border-top:1px solid rgba(242,232,220,0.15);padding-top:22px;}
+  .ritual-num{font-family:'Bitter',serif;font-style:italic;color:#C87F3F;font-size:0.92rem;margin-bottom:10px;display:block;}
+  .ritual-step h3{font-size:1.1rem;margin-bottom:9px;font-weight:600;}
+  .ritual-step p{font-size:0.88rem;color:rgba(242,232,220,0.55);}
+
+  /* STORY */
+  .story{background:#150F0C;}
+  .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:76px;align-items:center;}
+  .story-visual{
+    aspect-ratio:4/5;border-radius:2px;
+    background:radial-gradient(circle at 30% 30%, rgba(200,127,63,0.22), transparent 60%),linear-gradient(160deg,#2A2119,#150F0C);
+    display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;
+  }
+  .story-visual::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(115deg, transparent 0 40px, rgba(242,232,220,0.03) 40px 41px);}
+  .story-quote{font-family:'Bitter',serif;font-style:italic;font-size:1.35rem;color:#DCC9A8;text-align:center;padding:40px;position:relative;z-index:1;}
+  .story-text p{color:rgba(242,232,220,0.6);margin-bottom:17px;font-size:0.96rem;}
+
+  /* REVIEWS */
+  .reviews-strip{display:flex;gap:2px;overflow-x:auto;background:rgba(242,232,220,0.08);}
+  .review{min-width:280px;background:#211A15;padding:32px;flex:1;}
+  .review-stars{color:#C87F3F;font-size:0.9rem;margin-bottom:14px;letter-spacing:2px;}
+  .review p{font-size:0.9rem;color:rgba(242,232,220,0.7);margin-bottom:18px;}
+  .review-name{font-size:0.8rem;color:#C87F3F;letter-spacing:0.5px;}
+
+  /* CONCIERGE */
+  .concierge{background:#211A15;display:grid;grid-template-columns:1.1fr 0.9fr;gap:56px;align-items:center;}
+  .concierge h2{margin-bottom:18px;}
+  .concierge p{color:rgba(242,232,220,0.58);margin-bottom:28px;max-width:460px;}
+  .faq-item{border-bottom:1px solid rgba(242,232,220,0.12);padding:15px 0;font-size:0.9rem;color:rgba(242,232,220,0.58);}
+  .concierge-card{border:1px solid rgba(242,232,220,0.15);border-radius:4px;padding:38px;background:#1A1512;display:flex;flex-direction:column;gap:16px;align-items:flex-start;}
+  .concierge-badge{width:44px;height:44px;border-radius:50%;background:#C87F3F;display:flex;align-items:center;justify-content:center;font-family:'Bitter',serif;font-style:italic;font-size:1.05rem;color:#1A1512;}
+  .concierge-card h3{font-size:1.1rem;}
+  .concierge-card p{font-size:0.87rem;color:rgba(242,232,220,0.5);margin:0;}
+
+  /* FOOTER */
+  footer{padding:56px 48px 40px;border-top:1px solid rgba(242,232,220,0.08);display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+  footer .brand{font-size:1.05rem;}
+  footer p{font-size:0.8rem;color:rgba(242,232,220,0.4);}
+
+  @media(max-width:900px){
+    .story-grid,.concierge{grid-template-columns:1fr;}
+    nav .links{display:none;}
+    nav{padding:16px 22px;}
+    section{padding:64px 22px;}
+    .hero{padding:110px 22px 56px;}
+  }
+
+  :root{
+    --chat--color-primary: #C87F3F;
+    --chat--color-secondary: #8B4225;
+    --chat--window--width: 380px;
+    --chat--window--height: 560px;
+    --chat--message--bot--background: #2A2119;
+    --chat--message--bot--color: #F2E8DC;
+    --chat--message--user--background: #C87F3F;
+    --chat--message--user--color: #1A1512;
+    --chat--toggle--background: #C87F3F;
+    --chat--toggle--hover--background: #d99354;
+    --chat--toggle--color: #1A1512;
+    --chat--body--background: #1A1512;
+    --chat--header--background: #211A15;
+    --chat--header--color: #F2E8DC;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">KINDLING <em>Co.</em></div>
+  <div class="links">
+    <a href="#shop">Shop</a>
+    <a href="#brew">Brew Guide</a>
+    <a href="#story">Our Story</a>
+    <a href="#help">Help</a>
+  </div>
+  <div class="nav-cta">Subscribe & Save</div>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">Small-batch roasted, shipped within 48 hours</div>
+  <h1>Roasted at the<br/><span class="i">edge of dawn.</span></h1>
+  <p>We roast in micro-batches every morning before sunrise, then ship the same day — so what lands on your counter is never more than five days off the roaster.</p>
+  <div class="hero-row">
+    <a href="#shop" class="btn btn-primary">Shop the roast →</a>
+    <a href="#help" class="btn btn-ghost">Ask a question</a>
+  </div>
+  <div class="stats">
+    <div><div class="stat-num">48hr</div><div class="stat-label">Roast to Ship</div></div>
+    <div><div class="stat-num">4</div><div class="stat-label">Signature Blends</div></div>
+    <div><div class="stat-num">12k+</div><div class="stat-label">Subscribers</div></div>
+  </div>
+</div>
+
+<svg class="steam" viewBox="0 0 1440 56" preserveAspectRatio="none"><path d="M0,28 C 180,0 360,56 540,28 C 720,0 900,56 1080,28 C 1260,0 1440,28 1440,28 L1440,56 L0,56 Z"></path></svg>
+
+<section id="shop" class="products-bg">
+  <div class="section-inner">
+    <div class="eyebrow">The Collection</div>
+    <h2 class="section-title">Four roasts, one obsession.</h2>
+    <p class="section-sub">Every bag is dated with its roast day — not a "best by" guess, the actual morning it left the drum.</p>
+  </div>
+  <div class="product-grid">
+    <div class="product-card">
+      <div class="product-bag bag1">bright</div>
+      <div class="product-name">First Light</div>
+      <div class="product-desc">Light roast, citrus and honey notes.</div>
+      <div class="product-price">$19</div>
+    </div>
+    <div class="product-card">
+      <div class="product-bag bag2">balanced</div>
+      <div class="product-name">Ember Blend</div>
+      <div class="product-desc">Medium roast, our house signature.</div>
+      <div class="product-price">$21</div>
+    </div>
+    <div class="product-card">
+      <div class="product-bag bag3">bold</div>
+      <div class="product-name">Midnight Drip</div>
+      <div class="product-desc">Dark roast, cocoa and smoked oak.</div>
+      <div class="product-price">$21</div>
+    </div>
+    <div class="product-card">
+      <div class="product-bag bag4">gentle</div>
+      <div class="product-name">Ember Decaf</div>
+      <div class="product-desc">Swiss water process, full flavor.</div>
+      <div class="product-price">$23</div>
+    </div>
+  </div>
+</section>
+
+<svg class="steam flip" viewBox="0 0 1440 56" preserveAspectRatio="none"><path d="M0,28 C 180,0 360,56 540,28 C 720,0 900,56 1080,28 C 1260,0 1440,28 1440,28 L1440,56 L0,56 Z" style="fill:#1A1512"></path></svg>
+
+<section id="brew">
+  <div class="section-inner">
+    <div class="eyebrow">Brewing Ritual</div>
+    <h2 class="section-title">The Kindling pour-over, step by step.</h2>
+    <p class="section-sub">Good coffee is patient. Here's how we brew ours at the roastery, every morning.</p>
+    <div class="ritual-steps">
+      <div class="ritual-step"><span class="ritual-num">01</span><h3>Grind</h3><p>Medium-coarse, right before brewing — never in advance.</p></div>
+      <div class="ritual-step"><span class="ritual-num">02</span><h3>Bloom</h3><p>Pour just enough water to wet the grounds, wait 30 seconds.</p></div>
+      <div class="ritual-step"><span class="ritual-num">03</span><h3>Pour</h3><p>Slow, circular pours over 3 minutes total.</p></div>
+      <div class="ritual-step"><span class="ritual-num">04</span><h3>Rest</h3><p>Let it settle 30 seconds before your first sip.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="story" class="story">
+  <div class="section-inner story-grid">
+    <div class="story-visual"><div class="story-quote">"We roast before the city wakes up — so freshness isn't a marketing word here, it's a schedule."</div></div>
+    <div class="story-text">
+      <div class="eyebrow">Our Story</div>
+      <h2 class="section-title">Started in a garage, still roasting the same way.</h2>
+      <p>Kindling began with one drum roaster and a 5am alarm. We still roast before sunrise — not for the aesthetic, but because that's when the beans are calmest and easiest to read.</p>
+      <p>Every subscriber gets beans roasted within days of shipping, not months sitting in a warehouse.</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding:0;">
+  <div class="reviews-strip">
+    <div class="review"><div class="review-stars">★★★★★</div><p>"First bag that actually tasted like the roast date on the label. Ember Blend is now a daily thing."</p><div class="review-name">— Rohan T., subscriber</div></div>
+    <div class="review"><div class="review-stars">★★★★★</div><p>"Asked their bot about pausing my subscription at 11pm and it just... handled it. Didn't expect that."</p><div class="review-name">— Meera S., subscriber</div></div>
+    <div class="review"><div class="review-stars">★★★★★</div><p>"Midnight Drip is exactly what it promises — no bitterness, just deep cocoa notes."</p><div class="review-name">— James O., subscriber</div></div>
+  </div>
+</section>
+
+<section id="help" class="concierge">
+  <div>
+    <div class="eyebrow">Here to help</div>
+    <h2>Questions? Ask the Roastmaster.</h2>
+    <p>Shipping, subscriptions, grind size, brewing help — ask anything below, day or night.</p>
+    <div class="faq-item">Can I pause or change my subscription?</div>
+    <div class="faq-item">What's your return policy?</div>
+    <div class="faq-item">Which roast should I start with?</div>
+  </div>
+  <div class="concierge-card">
+    <div class="concierge-badge">K</div>
+    <h3>Talk to the Kindling Concierge</h3>
+    <p>Click the chat bubble in the bottom right — it's live right now.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="brand">KINDLING <em>Co.</em></div>
+  <p>Demo storefront built to showcase AI concierge automation — not a real store.</p>
+</footer>
+
+<!-- ============================================= -->
+<!-- AI CONCIERGE CHAT WIDGET — powered by your bot   -->
+<!-- Replace the webhookUrl below with your live      -->
+<!-- production webhook URL once your bot is rebuilt  -->
+<!-- ============================================= -->
+<link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+<script type="module">
+  import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+  createChat({
+    webhookUrl: 'PASTE_YOUR_N8N_WEBHOOK_URL_HERE',
+    mode: 'window',
+    showWelcomeScreen: false,
+    chatInputKey: 'chatInput',
+    chatSessionKey: 'sessionId',
+    defaultLanguage: 'en',
+    initialMessages: [
+      "Hi! I'm the Kindling Roastmaster concierge. Ask me about shipping, subscriptions, or which roast to try first."
+    ],
+    i18n: {
+      en: {
+        title: 'Kindling Concierge',
+        subtitle: "We're here to help, 24/7.",
+        footer: '',
+        getStarted: 'New conversation',
+        inputPlaceholder: 'Type your question...',
+      },
+    },
+  });
+</script>
+
+</body>
+</html>
